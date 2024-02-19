@@ -38,19 +38,19 @@ class CustomUserViewSet(UserViewSet):
     permission_classes = (AllowAny,)
 
     @action(
-        methods=['get',],
+        methods=['get', ],
         url_path='me',
         detail=False,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
     )
     def me(self, request):
         serializer = self.get_serializer(self.request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(
-        methods=['post',],
+        methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
     )
     def subscribe(self, request, id):
         user = self.request.user
@@ -79,9 +79,9 @@ class CustomUserViewSet(UserViewSet):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @action(
-        methods=['get',],
+        methods=['get', ],
         detail=False,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
         pagination_class=LimitOffsetPagination,
     )
     def subscriptions(self, request):
@@ -131,7 +131,7 @@ class RecipesViewSet(ModelViewSet):
         return qs
 
     @action(
-        methods=['post',],
+        methods=['post', ],
         detail=True,
         permission_classes=[IsAuthenticated,],
     )

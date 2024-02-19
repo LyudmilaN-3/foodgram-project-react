@@ -84,7 +84,7 @@ class RecipeAdmin(admin.ModelAdmin):
     )
     list_display_links = ('id',)
     fields = [('name', 'author', 'image',),
-              ('text', 'cooking_time',),]
+              ('text', 'cooking_time',), ]
 
     @admin.display(description='Картинка')
     def short_image(self, obj):

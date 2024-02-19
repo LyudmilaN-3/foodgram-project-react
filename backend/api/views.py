@@ -133,7 +133,7 @@ class RecipesViewSet(ModelViewSet):
     @action(
         methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
     )
     def favorite(self, request, pk):
         user = self.request.user
@@ -167,9 +167,9 @@ class RecipesViewSet(ModelViewSet):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @action(
-        methods=['post',],
+        methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
     )
     def shopping_cart(self, request, pk):
         user = self.request.user
@@ -193,9 +193,9 @@ class RecipesViewSet(ModelViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(
-        methods=['get',],
+        methods=['get', ],
         detail=False,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated, ],
     )
     def download_shopping_cart(self, request):
         ingredients = IngredientInRecipe.objects.filter(

@@ -8,11 +8,16 @@ from ...models import Ingredient, Tag
 def import_data():
     with open('../data/ingredients.csv') as csvfile:
         reader = csv.DictReader(csvfile)
-        for row in reader:
-            Ingredient.objects.create(
+        create_ingredients = [
+            Ingredient(
                 name=row['name'],
                 measurement_unit=row['measurement_unit'],
             )
+            for row in reader
+        ]
+        Ingredient.objects.bulk_create(
+            create_ingredients
+        )
 
     with open('../data/tags.csv') as csvfile:
         reader = csv.DictReader(csvfile)

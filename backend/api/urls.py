@@ -12,15 +12,15 @@ from .views import (
 
 app_name = 'api'
 
-router = routers.DefaultRouter()
+router_v1 = routers.DefaultRouter()
 
 
-router.register(r'users', CustomUserViewSet, basename='users')
-router.register(r'ingredients', IngredientViewSet)
-router.register(r'recipes', RecipesViewSet, basename='recipes')
-router.register(r'tags', TagViewSet)
+router_v1.register(r'users', CustomUserViewSet, basename='users')
+router_v1.register(r'ingredients', IngredientViewSet)
+router_v1.register(r'recipes', RecipesViewSet, basename='recipes')
+router_v1.register(r'tags', TagViewSet)
 
 urlpatterns = [
     url(r'^auth/', include('djoser.urls.authtoken')),
-    url(r'', include(router.urls)),
+    url(r'', include(router_v1.urls)),
 ]

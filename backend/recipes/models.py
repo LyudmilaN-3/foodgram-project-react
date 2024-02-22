@@ -16,6 +16,7 @@ class Ingredient(models.Model):
     )
 
     class Meta:
+        ordering = ('name',)
         verbose_name = 'Ингредиент'
         verbose_name_plural = 'Ингредиенты'
 
@@ -47,6 +48,7 @@ class Tag(models.Model):
     )
 
     class Meta:
+        ordering = ('name',)
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
@@ -161,6 +163,7 @@ class Favorite(models.Model):
                 name='unique_favorite_user_recipe'
             )
         ]
+        ordering = ('user',)
         verbose_name = 'Избранное'
         verbose_name_plural = 'Избранное'
 
@@ -187,6 +190,7 @@ class ShoppingCart(models.Model):
                 name='unique_shopping_user_recipe'
             )
         ]
+        ordering = ('user',)
         verbose_name = 'Список покупок'
         verbose_name_plural = 'Список покупок'
 

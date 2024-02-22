@@ -41,7 +41,7 @@ class CustomUserViewSet(UserViewSet):
         methods=['get', ],
         url_path='me',
         detail=False,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
     )
     def me(self, request):
         serializer = self.get_serializer(self.request.user)
@@ -50,7 +50,7 @@ class CustomUserViewSet(UserViewSet):
     @action(
         methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
     )
     def subscribe(self, request, id):
         user = self.request.user
@@ -81,7 +81,7 @@ class CustomUserViewSet(UserViewSet):
     @action(
         methods=['get', ],
         detail=False,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
         pagination_class=LimitOffsetPagination,
     )
     def subscriptions(self, request):
@@ -133,7 +133,7 @@ class RecipesViewSet(ModelViewSet):
     @action(
         methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
     )
     def favorite(self, request, pk):
         user = self.request.user
@@ -169,7 +169,7 @@ class RecipesViewSet(ModelViewSet):
     @action(
         methods=['post', ],
         detail=True,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
     )
     def shopping_cart(self, request, pk):
         user = self.request.user
@@ -195,7 +195,7 @@ class RecipesViewSet(ModelViewSet):
     @action(
         methods=['get', ],
         detail=False,
-        permission_classes=[IsAuthenticated, ],
+        permission_classes=(IsAuthenticated,),
     )
     def download_shopping_cart(self, request):
         ingredients = IngredientInRecipe.objects.filter(
